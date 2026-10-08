@@ -54,6 +54,7 @@ Mobile (Android and iOS) UI automation and REST API automation for the assessmen
 
 ```
 npm install
+npm run setup:apps
 ```
 
 For iOS, also install the XCUITest driver (the UiAutomator2 driver is already a dependency):
