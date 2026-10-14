@@ -8,11 +8,15 @@ class LoginPage {
     }
 
     get loginButton() {
-        return $('//android.widget.TextView[@text="LOGIN"]');
+        return driver.isIOS
+            ? $('~button-LOGIN')
+            : $('//android.widget.TextView[@text="LOGIN"]');
     }
 
     get loginSuccessMessage() {
-        return $('id=android:id/message');
+        return driver.isIOS
+            ? $('-ios predicate string:type == "XCUIElementTypeStaticText" AND label CONTAINS "You are logged in"')
+            : $('id=android:id/message');
     }
 
     async open() {
@@ -29,11 +33,16 @@ class LoginPage {
     }
 
     get loginOkButton() {
-        return $('id=android:id/button1');
+        return driver.isIOS
+            ? $('-ios predicate string:type == "XCUIElementTypeButton" AND label == "OK"')
+            : $('id=android:id/button1');
     }
 
     get loginErrorMessage() {
-        return $('//android.widget.TextView[@text="Please enter at least 8 characters"]');
+        const text = 'Please enter at least 8 characters';
+        return driver.isIOS
+            ? $(`-ios predicate string:type == "XCUIElementTypeStaticText" AND label == "${text}"`)
+            : $(`//android.widget.TextView[@text="${text}"]`);
     }
 
     async login(username: string, password: string) {

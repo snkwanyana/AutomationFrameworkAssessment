@@ -3,7 +3,7 @@ import { validCredentials } from '../../utils/ApiTestData';
 
 test.describe('Auth API', () => {
     test('POST /auth returns a token for valid credentials', async ({ request }) => {
-        const response = await request.post('/auth', { 
+        const response = await request.get('/auth', { 
             data: validCredentials() 
         });
 

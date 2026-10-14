@@ -1,6 +1,6 @@
 import FormsPage from '../../pageobjects/FormsPage';
 
-describe('Forms Page', () => {
+describe('Forms Page', () => { 
     it('should enter text in the input field', async () => {
         await FormsPage.openForms();
         await FormsPage.enterInputField('Test');
